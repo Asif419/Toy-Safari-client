@@ -1,6 +1,6 @@
 import { Link, useRouteError } from 'react-router-dom';
 import Lottie from "lottie-react";
-import errorPicture from '../assets/';
+import errorPicture from '../assets/animation/error.json';
 
 const Error = () => {
   const { error, status } = useRouteError();
@@ -16,14 +16,14 @@ const Error = () => {
           />
         </div>
         <div className='max-w-md text-center'>
-          <h2 className='mb-3 font-extrabold text-8xl text-pink-500'>
+          <h2 className='mb-3 font-extrabold text-8xl text-black-500'>
             <span className='sr-only'>Error</span>
             {status || 404}
           </h2>
-          <p className='text-2xl font-semibold md:text-3xl text-red-800 mb-3'>
+          <p className='text-2xl font-semibold md:text-3xl text-black mb-3'>
             {error?.message}
           </p>
-          <Link to='/' className='btn btn-secondary'>
+          <Link to='/' className='btn'>
             Back to homepage
           </Link>
         </div>
