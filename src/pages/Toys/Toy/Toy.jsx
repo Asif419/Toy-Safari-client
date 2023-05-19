@@ -4,19 +4,41 @@ import quantity from '../../../assets/icon/quantity.png';
 import ratings from '../../../assets/icon/rating.png';
 import Rating from 'react-rating';
 import { FaStar, FaRegStar } from "react-icons/fa";
+import { useEffect } from "react";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 
 const Toy = () => {
   const data = useLoaderData();
   const [toy] = data;
   const { toyName, sellerName, subCategory, price, availableQuantity, pictureURL, sellerEmail, sellerImageURL, rating, description } = toy;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+    });
+  }, []);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-2 p-2 md:p-3 my-5">
-      <div className="hero bg-base-200 p-3 md:p-5 rounded-3xl">
+      <div className="hero bg-base-200 rounded-3xl">
         <div>
           {/* img and details */}
           <div className="hero-content flex-col lg:flex-row">
-            <img src={pictureURL} className="w-full md:w-1/3 rounded-lg shadow-2xl" />
+            <LazyLoadImage
+              className='w-full rounded-lg shadow-2xl'
+              src={pictureURL}
+              effect="blur"
+              alt="Album" />
             <div>
               <div className="flex justify-items-center items-center gap-3">
                 <h1 className="text-5xl font-bold text-black">{toyName}</h1>
@@ -27,7 +49,7 @@ const Toy = () => {
           </div>
           {/* price, quantity, availability */}
           <div className="grid grid-cols-1 md:grid-cols-3">
-            <div className="px-5 flex flex-col justify-items-center items-center">
+            <div className="flex flex-col justify-items-center items-center">
               <img src={money} className="w-12 h-12" alt="money" />
               <p className="font-bold">price</p>
               <p>$ {price}</p>
@@ -51,8 +73,8 @@ const Toy = () => {
             </div>
           </div>
           {/* buy button */}
-          <div className="flex justify-items-center items-center">
-            <button className="btn btn-primary flex ">Buy Now</button>
+          <div className="flex justify-center items-center">
+            <button className="btn btn-primary flex my-2">Buy Now</button>
           </div>
         </div>
       </div>
@@ -64,7 +86,7 @@ const Toy = () => {
           <div className='flex justify-center'>
             <div className="-mb-16 z-20">
               <div className="avatar">
-                <div className="w-24 mask mask-squircle">
+                <div className="w-24 mask mask-squircle" data-aos="fade-left" >
                   <img src={sellerImageURL} />
                 </div>
               </div>

@@ -47,26 +47,32 @@ const Header = () => {
                 All Toys
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/myToys"
-                className={({ isActive }) =>
-                  isActive ? "font-bold decoration-stone-950" : ""
-                }
-              >
-                My Toys
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/addToy"
-                className={({ isActive }) =>
-                  isActive ? "font-bold decoration-stone-950" : ""
-                }
-              >
-                Add Toy
-              </NavLink>
-            </li>
+            {
+              user &&
+              <li>
+                <NavLink
+                  to="/myToys"
+                  className={({ isActive }) =>
+                    isActive ? "font-bold decoration-stone-950" : ""
+                  }
+                >
+                  My Toys
+                </NavLink>
+              </li>
+            }
+            {
+              user &&
+              <li>
+                <NavLink
+                  to="/addToy"
+                  className={({ isActive }) =>
+                    isActive ? "font-bold decoration-stone-950" : ""
+                  }
+                >
+                  Add Toy
+                </NavLink>
+              </li>
+            }
             <li>
               <NavLink
                 to="/blogs"
@@ -119,26 +125,32 @@ const Header = () => {
                 All Toys
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/myToys"
-                className={({ isActive }) =>
-                  isActive ? "font-bold decoration-stone-950" : ""
-                }
-              >
-                My Toys
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/addToy"
-                className={({ isActive }) =>
-                  isActive ? "font-bold decoration-stone-950" : ""
-                }
-              >
-                Add Toy
-              </NavLink>
-            </li>
+            {
+              user &&
+              <li>
+                <NavLink
+                  to="/myToys"
+                  className={({ isActive }) =>
+                    isActive ? "font-bold decoration-stone-950" : ""
+                  }
+                >
+                  My Toys
+                </NavLink>
+              </li>
+            }
+            {
+              user &&
+              <li>
+                <NavLink
+                  to="/addToy"
+                  className={({ isActive }) =>
+                    isActive ? "font-bold decoration-stone-950" : ""
+                  }
+                >
+                  Add Toy
+                </NavLink>
+              </li>
+            }
             <li>
               <NavLink
                 to="/blogs"
