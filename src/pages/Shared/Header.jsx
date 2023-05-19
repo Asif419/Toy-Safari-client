@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Header = () => {
-  const { logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
@@ -154,30 +154,39 @@ const Header = () => {
       </div>
       <div className="navbar-end">
         <div className='flex justify-end'>
-          <button onClick={handleLogOut} className='hidden lg:flex btn btn-ghost px-5 py-0' >Log out</button>
-          <Link to='/login' className="btn btn-ghost px-5 py-0">
-            login
-          </Link>
-          <div className="dropdown dropdown-end">
-            <div data-tooltip-id="my-tooltip" className='m-0 p-0'>
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-14 rounded-full">
-                  <img src={'https://i.ibb.co/q5hwqD5/photo-1573547429441-d7ef62e04b63.jpg'} />
+          {
+            user ?
+              <button onClick={handleLogOut} className='hidden lg:flex btn btn-ghost px-5 py-0' >Log out</button>
+              :
+              <Link to='/login' className="btn btn-ghost px-5 py-0">
+                login
+              </Link>
+          }
+          {
+            user &&
+            <>
+              <div className="dropdown dropdown-end">
+                <div className="tooltip tooltip-bottom" data-tip={user.displayName || ''}>
+                  <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                    <div className="w-14 rounded-full">
+                      <img src={'https://i.ibb.co/q5hwqD5/photo-1573547429441-d7ef62e04b63.jpg'} />
+                    </div>
+                  </label>
                 </div>
-              </label>
-            </div>
-            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              <li>
-                <Link to='/user-profile'>
-                  Profile
-                </Link>
-              </li>
-              <li>
-                <button>Log out</button>
-              </li>
+                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                  <li>
+                    <Link to='/user-profile'>
+                      Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <button onClick={handleLogOut}>Log out</button>
+                  </li>
 
-            </ul>
-          </div>
+                </ul>
+              </div>
+            </>
+          }
         </div>
       </div>
     </div>
