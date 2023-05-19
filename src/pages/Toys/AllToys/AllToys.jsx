@@ -1,20 +1,41 @@
 import { useLoaderData } from "react-router-dom";
 import AllToysSingle from "./AllToysSingle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AllToys = () => {
   const allToys = useLoaderData();
+  const [toys, setToys] = useState(allToys);
   const [searchValue, setSearchValue] = useState('');
 
+
+  let debounceTimer;
+
+  const handleSearchData = (value) => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      if (value === '' || !value) {
+        setToys(allToys);
+        return;
+      }
+      else {
+        fetch(`http://localhost:5000/searchToys/${value}`)
+          .then((res) => res.json())
+          .then((data) => setToys(data));
+      }
+    }, 300);
+  };
+
+
   const handleSearch = event => {
+    clearTimeout(debounceTimer);
     const value = event.target.value;
     setSearchValue(value);
   }
 
-  
-  console.log(searchValue);
+  useEffect(() => {
+    handleSearchData(searchValue);
+  }, [allToys, searchValue])
 
-  // console.log(allToys)
   return (
     <div>
       <div className="flex justify-center items-center">
@@ -41,10 +62,10 @@ const AllToys = () => {
           <tbody>
             {/* row */}
             {
-              allToys.map(singleToy =>
+              toys.map(toy =>
                 <AllToysSingle
-                  key={singleToy._id}
-                  singleToy={singleToy}
+                  key={toy._id}
+                  toy={toy}
                 ></AllToysSingle>)
             }
           </tbody>

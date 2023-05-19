@@ -1,6 +1,11 @@
 
-const AllToysSingle = ({ singleToy }) => {
-  const { _id, sellerName, sellerImageURL, toyName, subCategory, price, availableQuantity, } = singleToy
+const AllToysSingle = ({ toy }) => {
+  const { _id, sellerName, sellerImageURL, toyName, subCategory, price, availableQuantity, } = toy;
+
+  const handleSingleToy = id => {
+    console.log(id);
+  }
+
   return (
     <>
       <tr className="text-center">
@@ -32,7 +37,7 @@ const AllToysSingle = ({ singleToy }) => {
         <td>{price}</td>
         <td>{availableQuantity}</td>
         <th>
-          <button className="btn btn-ghost btn-xs">Details</button>
+          <button onClick={() => handleSingleToy(_id)} className="btn btn-ghost btn-xs">Details</button>
         </th>
       </tr >
     </>
