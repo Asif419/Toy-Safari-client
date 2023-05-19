@@ -1,9 +1,11 @@
+import { useNavigate } from "react-router-dom";
 
 const AllToysSingle = ({ toy }) => {
   const { _id, sellerName, sellerImageURL, toyName, subCategory, price, availableQuantity, } = toy;
+  const navigate = useNavigate();
 
   const handleSingleToy = id => {
-    console.log(id);
+    navigate(`/toys/${id}`);
   }
 
   return (
