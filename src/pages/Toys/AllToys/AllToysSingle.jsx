@@ -5,7 +5,7 @@ const AllToysSingle = ({ toy }) => {
   const navigate = useNavigate();
 
   const handleSingleToy = id => {
-    navigate(`/toys/${id}`);
+    navigate(`/toy/${id}`);
   }
 
   return (
