@@ -1,19 +1,83 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 const Register = () => {
-  // const { createUser, updateUserProfile, googleSignIn, gitHubSignIn, logOut } = useContext(AuthContext);
+  const { createUser, updateUserProfile, googleSignIn, gitHubSignIn, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(null);
   const location = useLocation();
+
+  const handleRegister = event => {
+    event.preventDefault();
+
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    // https://i.ibb.co/Cm4YfDL/photo.jpg
+    const email = form.email.value;
+    const password = form.password.value;
+
+    if (password.length < 6) {
+      setErrorMessage('Password should be at least 6 characters');
+      return;
+    }
+    else if (!/(?=.*[A-Z])/.test(password)) {
+      setErrorMessage('Use at least one Uppercase in password');
+      return;
+    }
+    else if (!/(?=.*[0-9])/.test(password)) {
+      setErrorMessage('Use at least one number in password');
+      return;
+    }
+
+    createUser(email, password)
+      .then(result => {
+        const loggedUser = result.user;
+        updateUserProfile(name, photoURL);
+        console.log(loggedUser);
+        logOut();
+        setErrorMessage(null);
+        form.reset();
+        navigate('/login', { state: { from: location.state } }, { replace: true });
+      })
+      .catch(error => {
+        setErrorMessage(error.message);
+      });
+  }
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser)
+        navigate(`${location.state.from}`, { replace: true });
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  const handleGitHubSignIn = () => {
+    gitHubSignIn()
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser)
+        navigate(`${location.state.from}`, { replace: true });
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
 
   return (
     <div>
       <div className="">
         <div className="text-center mx-auto p-5 md:p-10 form-control w-full max-w-xl bg-base-200 rounded-2xl my-10">
-          <form className='mb-3'>
+          <form className='mb-3' onSubmit={handleRegister}>
             <h3 className='text-3xl mb-10 font-semibold tracking-widest'>Registration!</h3>
             <div className='relative'>
               <div className="name">
@@ -56,8 +120,8 @@ const Register = () => {
           <div className='text-center'>
             <div className="divider">OR</div>
             <p>Login with social media</p>
-            <button className='mr-4'><FaGoogle className='text-4xl' /></button>
-            <button><FaGithub className='text-4xl' /></button>
+            <button onClick={handleGoogleSignIn} className='mr-4'><FaGoogle className='text-4xl' /></button>
+            <button onClick={handleGitHubSignIn}><FaGithub className='text-4xl' /></button>
           </div>
           <div>
             <div className="divider">Already have an Account?</div>

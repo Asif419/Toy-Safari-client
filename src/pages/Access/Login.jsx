@@ -1,13 +1,16 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import Lottie from "lottie-react";
 import login from '../../assets/animation/login.json';
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 const Login = () => {
+  const { emailSingIn, googleSignIn, gitHubSignIn } = useContext(AuthContext);
   const from = location.state?.from?.pathname || location.state?.from?.from || '/';
   const [errorMessage, setErrorMessage] = useState(null);
+  const navigate = useNavigate();
 
 
   const handleLogin = event => {
@@ -19,16 +22,41 @@ const Login = () => {
 
     console.log(email, password);
 
-    // emailSingIn(email, password)
-    //   .then(result => {
-    //     const loggedUser = result.user;
-    //     form.reset()
-    //     navigate(from, { replace: true });
-    //   })
-    //   .catch(error => {
-    //     setErrorMessage(error.message);
-    //   })
+    emailSingIn(email, password)
+      .then(result => {
+        const loggedUser = result.user;
+        form.reset()
+        console.log(loggedUser)
+        form.reset();
+        navigate(from, { replace: true });
+      })
+      .catch(error => {
+        setErrorMessage(error.message);
+      })
   }
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(result => {
+        const loggedUser = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  const handleGitHubSignIn = () => {
+    gitHubSignIn()
+      .then(result => {
+        const loggedUser = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2">
@@ -58,8 +86,8 @@ const Login = () => {
         <div className='text-center'>
           <div className="divider">OR</div>
           <p>Login with social media</p>
-          <button className='mr-4'><FaGoogle className='text-4xl' /></button>
-          <button><FaGithub className='text-4xl' /></button>
+          <button onClick={handleGoogleSignIn} className='mr-4'><FaGoogle className='text-4xl' /></button>
+          <button onClick={handleGitHubSignIn}><FaGithub className='text-4xl' /></button>
         </div>
         <div>
           <div className="divider">New Here?</div>
