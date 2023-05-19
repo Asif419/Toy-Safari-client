@@ -1,7 +1,6 @@
 
 const AllToysSingle = ({ singleToy }) => {
   const { _id, sellerName, sellerImageURL, toyName, subCategory, price, availableQuantity, } = singleToy
-  console.log(singleToy);
   return (
     <>
       <tr className="text-center">
