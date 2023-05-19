@@ -1,7 +1,21 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/picture/logo.png'
+import { useContext } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
 
 const Header = () => {
+  const { logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -140,7 +154,7 @@ const Header = () => {
       </div>
       <div className="navbar-end">
         <div className='flex justify-end'>
-          <button className='hidden lg:flex btn btn-ghost px-5 py-0' >Log out</button>
+          <button onClick={handleLogOut} className='hidden lg:flex btn btn-ghost px-5 py-0' >Log out</button>
           <Link to='/login' className="btn btn-ghost px-5 py-0">
             login
           </Link>

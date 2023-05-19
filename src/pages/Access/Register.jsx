@@ -37,7 +37,6 @@ const Register = () => {
       .then(result => {
         const loggedUser = result.user;
         updateUserProfile(name, photoURL);
-        console.log(loggedUser);
         logOut();
         setErrorMessage(null);
         form.reset();

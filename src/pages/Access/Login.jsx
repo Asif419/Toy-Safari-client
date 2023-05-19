@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import Lottie from "lottie-react";
 import login from '../../assets/animation/login.json';
@@ -8,6 +8,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
   const { emailSingIn, googleSignIn, gitHubSignIn } = useContext(AuthContext);
+  const location = useLocation();
   const from = location.state?.from?.pathname || location.state?.from?.from || '/';
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
@@ -20,14 +21,11 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    console.log(email, password);
 
     emailSingIn(email, password)
       .then(result => {
         const loggedUser = result.user;
         form.reset()
-        console.log(loggedUser)
-        form.reset();
         navigate(from, { replace: true });
       })
       .catch(error => {
