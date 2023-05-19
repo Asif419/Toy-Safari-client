@@ -4,35 +4,38 @@ const AllToysSingle = ({ singleToy }) => {
   console.log(singleToy);
   return (
     <>
-      <tr>
+      <tr className="text-center">
         {/* <th>
                 <label>
                   <input type="checkbox" className="checkbox" />
                 </label>
               </th> */}
         <th>
-          <div className="flex items-center space-x-10">
-            <div className="avatar">
-              <div className="mask mask-squircle w-12 h-12">
-                <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-              </div>
-            </div>
-            <div>
-              <div className="font-bold">Seller Name</div>
+          <div className="avatar">
+            <div className="mask mask-squircle w-12 h-12">
+              <img src={sellerImageURL} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
         </th>
         <td>
-          Toy Name
-          <br />
-          <span className="badge badge-ghost badge-sm">Category of toy</span>
+          <div className="flex items-center space-x-10">
+
+          </div>
+          <div>
+            <div className="font-bold">{sellerName}</div>
+          </div>
         </td>
-        <td>Price</td>
-        <td>Available Quantity</td>
+        <td>
+          {toyName}
+          <br />
+          <span className="badge badge-ghost badge-sm">{subCategory}</span>
+        </td>
+        <td>{price}</td>
+        <td>{availableQuantity}</td>
         <th>
           <button className="btn btn-ghost btn-xs">Details</button>
         </th>
-      </tr>
+      </tr >
     </>
   );
 };
