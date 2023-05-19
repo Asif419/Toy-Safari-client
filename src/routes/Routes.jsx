@@ -6,8 +6,8 @@ import Error from "../layout/Error";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Access/Login";
 import Register from "../pages/Access/Register";
-import AllToys from "../pages/Toys/AllToys";
-import MyToys from "../pages/Toys/MyToys";
+import AllToys from "../pages/Toys/AllToys/AllToys";
+import MyToys from "../pages/Toys/MyToys/MyToys";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
@@ -30,7 +30,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/toys',
-        element: <AllToys />
+        element: <AllToys />,
+        loader: () => fetch('https://toy-safari-server.vercel.app/toys')
       },
       {
         path: '/myToys',
