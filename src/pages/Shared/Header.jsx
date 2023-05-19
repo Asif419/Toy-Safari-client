@@ -15,7 +15,7 @@ const Header = () => {
           <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
             <li>
               <NavLink
-                to="/home"
+                to="/"
                 className={({ isActive }) =>
                   isActive ? "font-bold decoration-stone-950" : ""
                 }
@@ -87,7 +87,7 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">
             <li>
               <NavLink
-                to="/home"
+                to="/"
                 className={({ isActive }) =>
                   isActive ? "font-bold decoration-stone-950" : ""
                 }
@@ -141,6 +141,9 @@ const Header = () => {
       <div className="navbar-end">
         <div className='flex justify-end'>
           <button className='hidden lg:flex btn btn-ghost px-5 py-0' >Log out</button>
+          <Link to='/login' className="btn btn-ghost px-5 py-0">
+            login
+          </Link>
           <div className="dropdown dropdown-end">
             <div data-tooltip-id="my-tooltip" className='m-0 p-0'>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -158,6 +161,7 @@ const Header = () => {
               <li>
                 <button>Log out</button>
               </li>
+
             </ul>
           </div>
         </div>
