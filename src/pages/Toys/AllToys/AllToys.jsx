@@ -39,7 +39,11 @@ const AllToys = () => {
 
   useEffect(() => {
     handleSearchData(searchValue);
-  }, [allToys, searchValue])
+  }, [allToys, searchValue]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div>
