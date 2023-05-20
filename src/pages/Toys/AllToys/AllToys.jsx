@@ -1,12 +1,17 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import AllToysSingle from "./AllToysSingle";
 import { useEffect, useState } from "react";
+
 
 const AllToys = () => {
   const allToys = useLoaderData();
   const [toys, setToys] = useState(allToys);
   const [searchValue, setSearchValue] = useState('');
+  const navigate = useNavigate();
 
+  const handleSingleToy = id => {
+    navigate(`/toy/${id}`);
+  }
 
   let debounceTimer;
 
@@ -66,6 +71,7 @@ const AllToys = () => {
                 <AllToysSingle
                   key={toy._id}
                   toy={toy}
+                  handleSingleToy={handleSingleToy}
                 ></AllToysSingle>)
             }
           </tbody>

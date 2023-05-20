@@ -1,6 +1,11 @@
+import { FaTrashAlt, FaPenSquare } from "react-icons/fa";
 
-const AllToysSingle = ({ toy, handleSingleToy }) => {
+
+
+const MyToysSingle = ({ toy, handleDelete }) => {
   const { _id, sellerName, sellerImageURL, toyName, subCategory, price, availableQuantity, } = toy;
+
+
 
   return (
     <>
@@ -11,12 +16,17 @@ const AllToysSingle = ({ toy, handleSingleToy }) => {
                 </label>
               </th> */}
         <th>
+          <button onClick={() => handleDelete(_id)}>
+            <FaTrashAlt className="w-5 h-5"></FaTrashAlt>
+          </button>
+        </th>
+        <td>
           <div className="avatar">
             <div className="mask mask-squircle w-12 h-12">
               <img src={sellerImageURL} alt="Avatar Tailwind CSS Component" />
             </div>
           </div>
-        </th>
+        </td>
         <td>
           <div className="flex items-center space-x-10">
 
@@ -32,12 +42,17 @@ const AllToysSingle = ({ toy, handleSingleToy }) => {
         </td>
         <td>{price}</td>
         <td>{availableQuantity}</td>
-        <th>
+        <td>
           <button onClick={() => handleSingleToy(_id)} className="btn btn-ghost btn-xs">Details</button>
-        </th>
+        </td>
+        <td>
+          <button>
+            <FaPenSquare className="w-7 h-7"></FaPenSquare>
+          </button>
+        </td>
       </tr >
     </>
   );
 };
 
-export default AllToysSingle;
+export default MyToysSingle;
