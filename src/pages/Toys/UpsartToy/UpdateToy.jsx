@@ -1,22 +1,54 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
+import 'animate.css';
 
 const UpdateToy = () => {
   const data = useLoaderData();
   const [toy] = data;
-  const { toyName, subCategory, price, availableQuantity, pictureURL, rating, description } = toy;
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+  const { _id, toyName, subCategory, price, availableQuantity, pictureURL, rating, description } = toy;
+  const navigate = useNavigate();
+  // const [changed, setChanged] = useState(false);
+  const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
       subCategory: subCategory.toLowerCase() || "domestic" // Set the default value here
     }
   });
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = updatedToy => {
+
+    fetch(`http://localhost:5000/myToys/${_id}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(updatedToy)
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: 'Data Updated Successfully',
+            showClass: {
+              popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+              popup: 'animate__animated animate__fadeOutUp'
+            }
+          })
+            .then((result) => {
+              if (result.isConfirmed) {
+                navigate(`/myToys`);
+              }
+            })
+        }
+      })
+  };
 
   return (
     <div className="mx-auto p-5 form-control w-full max-w-xl bg-base-200 rounded-2xl my-10">
       <form className="flex flex-col gap-2 w-full justify-items-center items-center" onSubmit={handleSubmit(onSubmit)}>
-        {/* register your input into the hook by invoking the "register" function */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
           <div className="grid grid-cols-8 gap-3 justify-items-center items-center">
             <div className="col-span-3">
