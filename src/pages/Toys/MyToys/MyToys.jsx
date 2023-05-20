@@ -22,7 +22,7 @@ const MyToys = () => {
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5173/myToys/${id}`, {
+        fetch(`http://localhost:5000/myToys/${id}`, {
           method: 'DELETE'
         })
           .then(res => res.json())
@@ -45,6 +45,10 @@ const MyToys = () => {
 
   const handleSingleToy = id => {
     navigate(`/toy/${id}`);
+  }
+
+  const handleEdit = id => {
+    navigate(`/myToys/${id}`);
   }
 
   useEffect(() => {
@@ -96,6 +100,7 @@ const MyToys = () => {
                 toy={toy}
                 handleDelete={handleDelete}
                 handleSingleToy={handleSingleToy}
+                handleEdit={handleEdit}
               ></MyToysSingle>)
           }
         </tbody>
