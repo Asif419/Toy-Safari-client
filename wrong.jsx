@@ -1,43 +1,41 @@
-import { useState } from 'react'
-import logo from '../../assets/icon/best.png'
+import { useNavigate } from "react-router-dom";
+import AllToysSingle from "../../Toys/AllToys/AllToysSingle";
 
-const Gallery = () => {
-  const [isHovered, setIsHovered] = useState(false);
+const SingleCategory = ({ toys }) => {
+  const navigate = useNavigate();
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
+  const handleSingleToy = id => {
+    navigate(`/toy/${id}`);
+  }
   return (
-    <div className='my-3 md:my-5'>
-      <div>
-        <img className='h-20 w-[80px] mx-auto border-2 border-dashed rounded-full p-2' src={logo} alt="" />
-        <p className='font-bold text-center my-2 text-3xl'>Gallery of Best sells</p>
-      </div>
-      <div
-        className="relative w-72 bg-base-100 shadow-xl image-full group"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <img
-          className={`transition-opacity duration-500 ease-in-out rounded-lg ${isHovered ? 'opacity-70' : 'opacity-100'}`}
-          src="https://i.ibb.co/j6K82ZQ/Cow.jpg" alt="Shoes" />
-        {isHovered && (
-          <div className="rounded-lg absolute inset-0 flex flex-col justify-center text-center items-center p-5 bg-black bg-opacity-80 text-white">
-            <h2 className="card-title">Cow Toys!</h2>
-            <p>If a dog chews shoes, whose shoes does he choose?</p>
-            <div className="card-actions justify-end my-2">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        )}
-      </div>
+    <div className="overflow-x-auto w-full">
+      <table className="table w-full">
+        {/* head */}
+        <thead className="text-center">
+          <tr>
+            <th>Toy</th>
+            <th>Toy Name</th>
+            <th>Price</th>
+            <th>Available Quantity</th>
+            <th>Seller</th>
+            <th className="w-2">Name</th>
+            <th>Show Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            toys.map(toy =>
+              <AllToysSingle
+                key={toy._id}
+                toy={toy}
+                handleSingleToy={handleSingleToy}
+              ></AllToysSingle>)
+          }
+        </tbody>
+      </table>
     </div>
   );
 };
 
-export default Gallery;
+export default SingleCategory;

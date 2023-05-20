@@ -20,7 +20,7 @@ const Review = () => {
             <div className="border-l-2 border-gray-500 ml-2"></div>
           </div>
           <div>
-            <h2 className='text-slate-600 italic font-bold text-1xl'>Client's Say</h2>
+            <h2 className='text-slate-600 italic font-bold text-1xl'>Clients Say</h2>
           </div>
         </div>
         {/* client one message */}

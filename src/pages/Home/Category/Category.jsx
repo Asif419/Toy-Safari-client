@@ -14,11 +14,14 @@ const Category = () => {
 
   const showTable = (
     <>
-      {
-        <SingleCategory
-          toys={toys}
-        ></SingleCategory>
-      }
+      <div className='grid grid-cols-1 md:grid-cols-4 gap-2'>
+        {
+          toys.map(toy => <SingleCategory
+            key={toy._id}
+            toy={toy}
+          ></SingleCategory>)
+        }
+      </div>
     </>
   )
 
