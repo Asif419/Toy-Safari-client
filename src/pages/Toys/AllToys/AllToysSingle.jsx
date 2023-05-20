@@ -1,40 +1,38 @@
 
 const AllToysSingle = ({ toy, handleSingleToy }) => {
-  const { _id, sellerName, sellerImageURL, toyName, subCategory, price, availableQuantity, } = toy;
+  const { _id, sellerName, sellerImageURL, pictureURL, toyName, subCategory, price, availableQuantity, } = toy;
 
   return (
     <>
       <tr className="text-center">
-        {/* <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th> */}
         <th>
           <div className="avatar">
-            <div className="mask mask-squircle w-12 h-12">
-              <img src={sellerImageURL} alt="Avatar Tailwind CSS Component" />
+            <div className="mask mask-squircle w-16 h-16">
+              <img src={pictureURL} alt={toyName} />
             </div>
           </div>
         </th>
         <td>
-          <div className="flex items-center space-x-10">
-
-          </div>
-          <div>
-            <div className="font-bold">{sellerName}</div>
-          </div>
-        </td>
-        <td>
-          {toyName}
-          <br />
+          <p className="font-bold">{toyName}</p>
           <span className="badge badge-ghost badge-sm">{subCategory}</span>
         </td>
         <td>{price}</td>
         <td>{availableQuantity}</td>
-        <th>
+        <td>
+          <div className="avatar">
+            <div className="mask mask-squircle w-12 h-12">
+              <img src={sellerImageURL} alt={sellerName} />
+            </div>
+          </div>
+        </td>
+        <td>
+          <div>
+            {sellerName}
+          </div>
+        </td>
+        <td>
           <button onClick={() => handleSingleToy(_id)} className="btn btn-ghost btn-xs">Details</button>
-        </th>
+        </td>
       </tr >
     </>
   );

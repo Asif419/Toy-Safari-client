@@ -11,7 +11,7 @@ const UpdateToy = () => {
   // const [changed, setChanged] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
-      subCategory: subCategory.toLowerCase() || "domestic" // Set the default value here
+      subCategory: subCategory || "Domestic" // Set the default value here
     }
   });
 
@@ -68,9 +68,9 @@ const UpdateToy = () => {
               </div>
               <div className="col-span-5">
                 <select className="w-max px-3 py-1 rounded-lg" {...register("subCategory", { required: true })}>
-                  <option value="wild">Wild</option>
-                  <option value="domestic">Domestic</option>
-                  <option value="bird">Bird</option>
+                  <option value="Wild">Wild</option>
+                  <option value="Domestic">Domestic</option>
+                  <option value="Bird">Bird</option>
                 </select>
               </div>
             </div>

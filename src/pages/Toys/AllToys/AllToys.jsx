@@ -51,16 +51,12 @@ const AllToys = () => {
           {/* head */}
           <thead className="text-center">
             <tr>
-              {/* <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th> */}
-              <th>Seller</th>
-              <th>Name</th>
+              <th>Toy</th>
               <th>Toy Name</th>
               <th>Price</th>
               <th>Available Quantity</th>
+              <th>Seller</th>
+              <th className="w-2">Name</th>
               <th>Show Details</th>
             </tr>
           </thead>

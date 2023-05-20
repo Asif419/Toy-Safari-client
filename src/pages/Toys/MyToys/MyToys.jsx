@@ -11,7 +11,7 @@ const MyToys = () => {
   const [dataLoading, setDataLoading] = useState(true);
   const [toys, setToys] = useState([]);
   const [sort, setSort] = useState(false);
-  const [order, setOrder] = useState(false);
+  const [order, setOrder] = useState(true);
   const navigate = useNavigate();
 
   const handleDelete = id => {
@@ -90,20 +90,20 @@ const MyToys = () => {
         <div className="ml-auto">
           {sort && order && (
             <>
-              <FaSortUp className="w-7 h-7"></FaSortUp>
+              <FaSortDown className="w-7 h-7"></FaSortDown>
             </>
           )}
           {sort && !order && (
             <>
-              <FaSortDown className="w-7 h-7"></FaSortDown>
+              <FaSortUp className="w-7 h-7"></FaSortUp>
             </>
           )}
         </div>
         <div className="ml-1">
           <button onClick={handleOrder} className={`btn btn-sm bg-orange-900 text-white ${sort ? '' : 'hidden'} `}>
-          {
-            order ? 'Descending' : 'Ascending'
-          }
+            {
+              order ? 'Descending' : 'Ascending'
+            }
           </button>
         </div>
         <div className="ml-1">
@@ -121,11 +121,12 @@ const MyToys = () => {
                 </label>
               </th> */}
               <th>Delete</th>
-              <th>Seller</th>
-              <th>Name</th>
+              <th>Toy</th>
               <th>Toy Name</th>
               <th>Price</th>
               <th>Available Quantity</th>
+              <th>Seller</th>
+              <th>Seller Name</th>
               <th>Show Details</th>
               <th>Edit</th>
             </tr>
