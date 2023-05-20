@@ -23,7 +23,7 @@ const AllToys = () => {
         return;
       }
       else {
-        fetch(`http://localhost:5000/searchToys/${value}`)
+        fetch(`https://toy-safari-server.vercel.app/searchToys/${value}`)
           .then((res) => res.json())
           .then((data) => setToys(data));
       }

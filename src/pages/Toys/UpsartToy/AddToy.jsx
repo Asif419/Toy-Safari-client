@@ -11,7 +11,7 @@ const AddToy = () => {
 
   const onSubmit = addedToy => {
     addedToy.sellerImageURL = user.photoURL;
-    fetch(`http://localhost:5000/addToy`, {
+    fetch(`https://toy-safari-server.vercel.app/addToy`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

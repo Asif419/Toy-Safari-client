@@ -23,7 +23,7 @@ const Category = () => {
   )
 
   useEffect(() => {
-    fetch(`http://localhost:5000/toys/${category}`)
+    fetch(`https://toy-safari-server.vercel.app/toys/${category}`)
       .then(res => res.json())
       .then(data => {
         setToys(data);

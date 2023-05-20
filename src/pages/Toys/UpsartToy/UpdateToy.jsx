@@ -17,7 +17,7 @@ const UpdateToy = () => {
 
   const onSubmit = updatedToy => {
 
-    fetch(`http://localhost:5000/myToys/${_id}`, {
+    fetch(`https://toy-safari-server.vercel.app/myToys/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
