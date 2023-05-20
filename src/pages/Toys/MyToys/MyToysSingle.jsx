@@ -2,7 +2,7 @@ import { FaTrashAlt, FaPenSquare } from "react-icons/fa";
 
 
 
-const MyToysSingle = ({ toy, handleDelete }) => {
+const MyToysSingle = ({ toy, handleDelete, handleSingleToy }) => {
   const { _id, sellerName, sellerImageURL, toyName, subCategory, price, availableQuantity, } = toy;
 
 
