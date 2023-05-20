@@ -38,7 +38,7 @@ const Toy = () => {
               className='w-full rounded-lg shadow-2xl'
               src={pictureURL}
               effect="blur"
-              alt="Album" />
+              alt={toyName} />
             <div>
               <div className="flex justify-items-center items-center gap-3">
                 <h1 className="text-5xl font-bold text-black">{toyName}</h1>

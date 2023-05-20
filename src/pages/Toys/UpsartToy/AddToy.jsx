@@ -6,12 +6,11 @@ import { AuthContext } from "../../../providers/AuthProvider";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
+  console.log(user);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   const onSubmit = addedToy => {
-    addedToy.sellerName = user.displayName;
-    addedToy.sellerEmail = user.email;
-
+    addedToy.sellerImageURL = user.photoURL;
     fetch(`http://localhost:5000/addToy`, {
       method: 'POST',
       headers: {
@@ -23,7 +22,7 @@ const AddToy = () => {
       .then(data => {
         if (data.insertedId) {
           Swal.fire({
-            title: 'Data Updated Successfully',
+            title: 'Data Inserted Successfully',
             showClass: {
               popup: 'animate__animated animate__fadeInDown'
             },
@@ -49,7 +48,7 @@ const AddToy = () => {
       <div className="mx-auto p-5 form-control w-full max-w-xl bg-base-200 rounded-2xl my-10">
         <form className="flex flex-col gap-2 w-full justify-items-center items-center" onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div className="grid grid-cols-8 gap-3 justify-items-center items-center">
+            <div className="grid grid-cols-8 gap-3 justify-items-start items-center">
               <div className="col-span-3">
                 <span className="label-text font-semibold">Toy Name</span>
               </div>
@@ -57,7 +56,7 @@ const AddToy = () => {
                 <input className="w-10/12 px-3 py-1 rounded-lg" {...register("toyName", { required: true })} />
               </div>
             </div>
-            <div className="grid grid-cols-8 gap-3 justify-items-center items-center">
+            <div className="grid grid-cols-8 gap-3 justify-items-start items-center">
               <div className="col-span-3">
                 <span className="label-text font-semibold">Category</span>
               </div>
@@ -72,27 +71,46 @@ const AddToy = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div className="grid grid-cols-8 gap-3 justify-items-center items-center">
+            <div className="grid grid-cols-8 gap-3 justify-items-start items-center">
               <div className="col-span-3">
-                <span className="label-text font-semibold">Price</span>
-              </div>
-              <div className="col-span-5 sm:w-1/2 md:w-full mx-start">
-                <input className="w-10/12 px-3 py-1 rounded-lg" type="number" step="any" min="0" {...register("price", { min: 0, required: true })} />
-                {/* {errors.price && <p className="text-red-500">Please enter a non-negative number.</p>} */}
-              </div>
-            </div>
-            <div className="grid grid-cols-8 gap-3 justify-items-center items-center">
-              <div className="col-span-3">
-                <span className="label-text font-semibold">Quantity</span>
+                <span className="label-text font-semibold">Seller email</span>
               </div>
               <div className="col-span-5">
-                <input className="w-10/12 px-3 py-1 rounded-lg" type="number" min="0" {...register("availableQuantity", { min: 0, required: true })} />
+                <input className="w-10/12 px-3 py-1 rounded-lg" defaultValue={user.email} readOnly {...register("sellerEmail", { required: true })} />
+              </div>
+            </div>
+            <div className="grid grid-cols-8 gap-3 justify-items-start items-center">
+              <div className="col-span-3">
+                <span className="label-text font-semibold">Seller Name</span>
+              </div>
+              <div className="col-span-5">
+                <input className="w-10/12 px-3 py-1 rounded-lg" defaultValue={user.displayName} readOnly {...register("sellerName", { required: true })} />
               </div>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-            <div className="grid grid-cols-8 gap-3 justify-items-center items-center">
+            <div className="grid grid-cols-8 gap-3 justify-items-start items-center">
+              <div className="col-span-3">
+                <span className="label-text font-semibold">Price</span>
+              </div>
+              <div className="col-span-5 sm:w-1/2 md:w-full mx-start">
+                <input className="w-10/12 px-3 py-1 rounded-lg" type="number" step="any" min="0" {...register("price", { min: 0, required: true, setValueAs: (value) => parseFloat(value) })} />
+                {/* {errors.price && <p className="text-red-500">Please enter a non-negative number.</p>} */}
+              </div>
+            </div>
+            <div className="grid grid-cols-8 gap-3 justify-items-start items-center">
+              <div className="col-span-3">
+                <span className="label-text font-semibold">Quantity</span>
+              </div>
+              <div className="col-span-5">
+                <input className="w-10/12 px-3 py-1 rounded-lg" type="number" min="0" {...register("availableQuantity", { min: 0, required: true, setValueAs: (value) => parseFloat(value) })} />
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            <div className="grid grid-cols-8 gap-3 justify-items-start items-center">
               <div className="col-span-3">
                 <span className="label-text font-semibold">Picture URL</span>
               </div>
@@ -101,18 +119,18 @@ const AddToy = () => {
                 {/* {errors.price && <p className="text-red-500">Please enter a non-negative number.</p>} */}
               </div>
             </div>
-            <div className="grid grid-cols-8 gap-3 justify-items-center items-center">
+            <div className="grid grid-cols-8 gap-3 justify-items-start items-center">
               <div className="col-span-3">
                 <span className="label-text font-semibold">Rating</span>
               </div>
               <div className="col-span-5">
-                <input className="w-10/12 px-3 py-1 rounded-lg" type="number" step="any" min="0" {...register("rating", { min: 0, max: 5, required: true })} />
+                <input className="w-10/12 px-3 py-1 rounded-lg" type="number" step="any" min="0" {...register("rating", { min: 0, max: 5, required: true, setValueAs: (value) => parseFloat(value) })} />
                 {errors.rating && <p className="text-red-500">Please give a number between 0 and 5.</p>}
               </div>
             </div>
           </div>
 
-          <div className="w-full px-3 md:px-4 justify-items-center items-center">
+          <div className="w-full px-3 md:px-3 justify-items-start items-center">
             <div className="my-2">
               <span className="label-text font-semibold">Description</span>
             </div>
@@ -126,7 +144,7 @@ const AddToy = () => {
           </div>
           {errors.exampleRequired && <span>This field is required</span>}
 
-          <input className="btn bg-black text-white w-1/3 mx-auto mt-5" type="submit" value="Update" />
+          <input className="btn bg-black text-white w-1/3 mx-auto mt-5" type="submit" value="Add Toy" />
         </form>
       </div>
     </>
