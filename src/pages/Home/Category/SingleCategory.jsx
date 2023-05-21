@@ -1,14 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import Rating from "react-rating";
-import { FaRegStar, FaStar } from "react-icons/fa";
 import money from '../../../assets/icon/money.png';
-
 import quantity from '../../../assets/icon/quantity.png';
-import ratings from '../../../assets/icon/rating.png';
 
 const SingleCategory = ({ toy }) => {
-  const { _id, toyName, subCategory, price, availableQuantity, pictureURL, rating } = toy;
+  const { _id, toyName, subCategory, price, availableQuantity, pictureURL } = toy;
   const navigate = useNavigate();
 
 
@@ -34,24 +30,12 @@ const SingleCategory = ({ toy }) => {
             </div>
           </div>
           {/* price, quantity, availability */}
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center">
+          <div className="grid grid-cols-2 items-center justify-center">
             <div className="flex flex-col justify-items-center items-center">
               <img src={money} className="w-12 h-12" alt="money" />
               <p className="font-bold">price</p>
               <p>$ {price}</p>
             </div>
-            {/* <div className="flex flex-col justify-items-center items-center">
-              <img src={ratings} className="w-12 h-12" alt="rating" />
-              <p className="font-bold">Rating</p>
-              <div>
-                <Rating
-                  fullSymbol={<FaStar />}
-                  emptySymbol={<FaRegStar />}
-                  initialRating={rating}
-                  readonly
-                />
-              </div>
-            </div> */}
             <div className="flex flex-col justify-items-center items-center">
               <img src={quantity} className="w-12 h-12" alt="quantity" />
               <p className="font-bold">Quantity</p>
