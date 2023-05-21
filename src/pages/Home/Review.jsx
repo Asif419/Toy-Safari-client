@@ -1,8 +1,17 @@
 import bannerLogo from '../../assets/icon/review.png'
 import pageLogo from '../../assets/picture/logo.png'
 import { FaComments } from "react-icons/fa";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 const Review = () => {
+
+  useEffect(() => {
+    AOS.init({
+    });
+  }, []);
+
   return (
     <div className="mt-20 mx-10 md:mx-20">
       <div className='my-5'>
@@ -26,7 +35,7 @@ const Review = () => {
         {/* client one message */}
         <div className="border-2 border-dotted rounded-xl w-full min-h-[50vh] mx-auto flex flex-col justify-center items-center gap-5">
           <div className="avatar mt-5">
-            <div className="w-24 mask mask-hexagon">
+            <div className="w-24 mask mask-hexagon" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
               <img src="https://i.ibb.co/Cm4YfDL/photo.jpg" />
             </div>
           </div>
@@ -42,7 +51,7 @@ const Review = () => {
         </div>
         {/* client two message */}
         <div className="border-2 border-dotted rounded-xl w-full min-h-[50vh] mx-auto flex flex-col justify-center items-center gap-5">
-          <div className="avatar mt-5">
+          <div className="avatar mt-5" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
             <div className="w-24 mask mask-hexagon">
               <img src="https://i.ibb.co/gJtrmww/boy.jpg" />
             </div>

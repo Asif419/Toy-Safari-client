@@ -42,7 +42,7 @@ const Footer = () => {
         <a className="link link-hover">asshah419@gmail.com<span></span></a>
         <a className="link link-hover">+8801860239857</a>
       </div>
-      <div className='flex flex-col place-items-center'>
+      <div className='flex flex-col place-items-start md:place-items-center'>
         <img className='h-24 w-24 rounded-full' src={logo} alt="" />
         <p>
           <span className='text-2xl font-bold'>Toy Safari</span>

@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaGoogle, FaGithub } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
 import UseTitle from "../../utilities/UseTitle";
 
 
 const Register = () => {
-  const { createUser, updateUserProfile, googleSignIn, gitHubSignIn, logOut } = useContext(AuthContext);
+  const { createUser, updateUserProfile, googleSignIn, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(null);
   const location = useLocation();
@@ -52,16 +52,6 @@ const Register = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(() => {
-        navigate(`${location.state.from}`, { replace: true });
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
-
-  const handleGitHubSignIn = () => {
-    gitHubSignIn()
       .then(() => {
         navigate(`${location.state.from}`, { replace: true });
       })
@@ -122,7 +112,6 @@ const Register = () => {
             <div className="divider">OR</div>
             <p>Login with social media</p>
             <button onClick={handleGoogleSignIn} className='mr-4'><FaGoogle className='text-4xl' /></button>
-            <button onClick={handleGitHubSignIn}><FaGithub className='text-4xl' /></button>
           </div>
           <div>
             <div className="divider">Already have an Account?</div>

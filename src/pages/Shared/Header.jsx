@@ -3,6 +3,7 @@ import logo from '../../assets/picture/logo.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 
+
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
 
@@ -94,7 +95,7 @@ const Header = () => {
           >
             <div className='flex justify-center items-center gap-2'>
               <img className='h-14 w-14 rounded-full' src={logo} alt="" />
-              <p>Toy Safari</p>
+              <p className="another-font font-bold">Toy Safari</p>
             </div>
           </NavLink>
         </div>
