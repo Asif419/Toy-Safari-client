@@ -57,7 +57,7 @@ const Coupon = () => {
         {/* right side */}
         <div
           className={`px-5 rounded-xl bg-slate-300 flex justify-evenly items-center transition-transform duration-300 transform-gpu hover:bg-slate-200`}
-          data-aos="fade-left" data-aos-duration="800"
+          data-aos="fade-down" data-aos-duration="800"
         >
           <img src={boss} alt="" />
         </div>

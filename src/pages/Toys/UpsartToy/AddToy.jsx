@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import Swal from 'sweetalert2';
+import "sweetalert2/dist/sweetalert2.min.css";
 import 'animate.css';
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
@@ -45,7 +46,10 @@ const AddToy = () => {
         <p className="text-center my-2 text-2xl">Add <span className="font-bold tracking-wider text-red-800 ">    </span>  toy</p>
         <hr className="w-1/3 mx-auto" />
       </div>
-      <div className="mx-auto p-5 form-control w-full max-w-xl bg-base-200 rounded-2xl my-10">
+
+      {/* form started */}
+
+      <div className="mx-auto p-10 form-control w-full max-w-2xl bg-base-200 rounded-2xl my-10">
         <form className="flex flex-col gap-2 w-full justify-items-center items-center" onSubmit={handleSubmit(onSubmit)}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             <div className="grid grid-cols-8 gap-3 justify-items-start items-center">

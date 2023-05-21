@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import "sweetalert2/dist/sweetalert2.min.css";
 import 'animate.css';
 
 const UpdateToy = () => {
@@ -131,7 +132,7 @@ const UpdateToy = () => {
             </div>
           </div>
           {errors.exampleRequired && <span>This field is required</span>}
-
+          {/* <div id="toastContainer"></div> */}
           <input className="btn bg-black text-white w-1/3 mx-auto mt-5" type="submit" value="Update" />
         </form>
       </div>

@@ -1,16 +1,35 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import AllToysSingle from "./AllToysSingle";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from 'sweetalert2';
+import "sweetalert2/dist/sweetalert2.min.css";
 
 
 const AllToys = () => {
+  const { user } = useContext(AuthContext);
   const allToys = useLoaderData();
   const [toys, setToys] = useState(allToys);
   const [searchValue, setSearchValue] = useState('');
   const navigate = useNavigate();
 
   const handleSingleToy = id => {
-    navigate(`/toy/${id}`);
+    if (!user) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'You have to login First',
+      })
+        .then(result => {
+          if (result.isConfirmed) {
+            navigate(`/login`);
+          }
+        })
+    }
+    else {
+      navigate(`/toy/${id}`);
+    }
+
   }
 
   let debounceTimer;

@@ -181,13 +181,13 @@ const Header = () => {
                 <div className="tooltip tooltip-bottom" data-tip={user.displayName || ''}>
                   <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-14 rounded-full">
-                      <img src={'https://i.ibb.co/q5hwqD5/photo-1573547429441-d7ef62e04b63.jpg'} />
+                      <img src={`${user?.photoURL} || 'https://i.ibb.co/q5hwqD5/photo-1573547429441-d7ef62e04b63.jpg'`} />
                     </div>
                   </label>
                 </div>
                 <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                   <li>
-                    <Link to='/user-profile'>
+                    <Link to='/profile'>
                       Profile
                     </Link>
                   </li>

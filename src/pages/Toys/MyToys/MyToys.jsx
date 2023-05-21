@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import MyToysSingle from "./MyToysSingle";
 import Swal from 'sweetalert2';
+import "sweetalert2/dist/sweetalert2.min.css";
 import { useNavigate } from "react-router-dom";
 import { FaSortUp, FaSortDown } from "react-icons/fa";
 
