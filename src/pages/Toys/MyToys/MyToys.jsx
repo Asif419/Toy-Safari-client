@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import "sweetalert2/dist/sweetalert2.min.css";
 import { useNavigate } from "react-router-dom";
 import { FaSortUp, FaSortDown } from "react-icons/fa";
+import UseTitle from "../../../utilities/UseTitle";
 
 
 const MyToys = () => {
@@ -14,6 +15,9 @@ const MyToys = () => {
   const [sort, setSort] = useState(false);
   const [order, setOrder] = useState(true);
   const navigate = useNavigate();
+
+
+  UseTitle('My Toys');
 
   const handleDelete = id => {
     Swal.fire({

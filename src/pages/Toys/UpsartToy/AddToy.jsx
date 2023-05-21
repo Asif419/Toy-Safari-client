@@ -4,11 +4,15 @@ import "sweetalert2/dist/sweetalert2.min.css";
 import 'animate.css';
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import UseTitle from "../../../utilities/UseTitle";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
   console.log(user);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+  UseTitle('Add Toy');
+
 
   const onSubmit = addedToy => {
     addedToy.sellerImageURL = user.photoURL;

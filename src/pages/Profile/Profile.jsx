@@ -2,9 +2,13 @@ import { useContext, useEffect } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import UseTitle from '../../utilities/UseTitle';
 
 const Profile = () => {
   const { user } = useContext(AuthContext);
+
+  UseTitle(`${user.displayName}`);
+
 
   useEffect(() => {
     AOS.init({

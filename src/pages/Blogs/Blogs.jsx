@@ -1,8 +1,12 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import UseTitle from '../../utilities/UseTitle';
 
 const Blogs = () => {
+
+  UseTitle('Blogs');
+
 
   useEffect(() => {
     AOS.init({

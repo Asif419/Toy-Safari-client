@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
+import UseTitle from "../../utilities/UseTitle";
 
 
 const Register = () => {
@@ -9,6 +10,9 @@ const Register = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState(null);
   const location = useLocation();
+
+  UseTitle('Registration');
+
 
   const handleRegister = event => {
     event.preventDefault();

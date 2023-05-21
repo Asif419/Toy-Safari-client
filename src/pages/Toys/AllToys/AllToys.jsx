@@ -1,11 +1,10 @@
-import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import AllToysSingle from "./AllToysSingle";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from 'sweetalert2';
 import "sweetalert2/dist/sweetalert2.min.css";
-import PrivateRoute from "../../../routes/PrivateRoute";
-import Login from "../../Access/Login";
+import UseTitle from "../../../utilities/UseTitle";
 
 
 const AllToys = () => {
@@ -14,7 +13,8 @@ const AllToys = () => {
   const [toys, setToys] = useState(allToys);
   const [searchValue, setSearchValue] = useState('');
   const navigate = useNavigate();
-  const location = useLocation();
+
+  UseTitle('All Toys');
 
   const handleSingleToy = id => {
     if (!user) {
@@ -32,7 +32,6 @@ const AllToys = () => {
     else {
       navigate(`/toy/${id}`);
     }
-
   }
 
   let debounceTimer;
@@ -70,7 +69,7 @@ const AllToys = () => {
   return (
     <div>
       <div className="flex justify-center items-center">
-        <input onChange={handleSearch} type="text" placeholder="Search Here" className="input input-bordered my-3 w-full max-w-xs" />
+        <input onChange={handleSearch} type="text" placeholder="Search Here | ex. horse, dog" className="input input-bordered my-3 w-full max-w-xs" />
       </div>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
@@ -88,13 +87,15 @@ const AllToys = () => {
           </thead>
           <tbody>
             {/* row */}
-            {
+            {toys.length ?
               toys.map(toy =>
                 <AllToysSingle
                   key={toy._id}
                   toy={toy}
                   handleSingleToy={handleSingleToy}
                 ></AllToysSingle>)
+              :
+              <p className="mx-auto p-10 text-center">No result found</p>
             }
           </tbody>
         </table>

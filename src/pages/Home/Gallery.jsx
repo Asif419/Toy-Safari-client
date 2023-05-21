@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import logo from '../../assets/icon/best.png'
 import Marquee from "react-fast-marquee";
+
 const Gallery = () => {
   const [isHovered1, setIsHovered1] = useState(false);
   const [isHovered2, setIsHovered2] = useState(false);
@@ -18,7 +19,7 @@ const Gallery = () => {
         {/* card from here */}
         <Marquee
           pauseOnHover
-          speed={150}
+          speed={50}
         >
           <div className='grid grid-cols-4 justify-items-center gap-2 md:gap-8 px-5 mt-10'>
             <div

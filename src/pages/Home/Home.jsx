@@ -1,3 +1,4 @@
+import UseTitle from "../../utilities/UseTitle";
 import Banner from "./Banner";
 import BannerTwo from "./BannerTwo";
 import Category from "./Category/Category";
@@ -6,6 +7,9 @@ import Gallery from "./Gallery";
 import Review from "./Review";
 
 const Home = () => {
+
+  UseTitle('Home');
+
   return (
     <div className="py-5">
       <Banner></Banner>

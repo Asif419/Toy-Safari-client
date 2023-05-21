@@ -3,18 +3,21 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
 import "sweetalert2/dist/sweetalert2.min.css";
 import 'animate.css';
+import UseTitle from "../../../utilities/UseTitle";
 
 const UpdateToy = () => {
   const data = useLoaderData();
   const [toy] = data;
   const { _id, toyName, subCategory, price, availableQuantity, pictureURL, rating, description } = toy;
   const navigate = useNavigate();
-  // const [changed, setChanged] = useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm({
     defaultValues: {
-      subCategory: subCategory || "Domestic" // Set the default value here
+      subCategory: subCategory || "Domestic"
     }
   });
+
+  UseTitle('Update');
+
 
   const onSubmit = updatedToy => {
 

@@ -4,6 +4,7 @@ import { FaGithub, FaGoogle } from 'react-icons/fa';
 import Lottie from "lottie-react";
 import login from '../../assets/animation/login.json';
 import { AuthContext } from "../../providers/AuthProvider";
+import UseTitle from "../../utilities/UseTitle";
 
 
 const Login = () => {
@@ -12,6 +13,9 @@ const Login = () => {
   const from = location.state?.from?.pathname || location.state?.from?.from || '/';
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
+
+  UseTitle('Login');
+
 
 
   const handleLogin = event => {
