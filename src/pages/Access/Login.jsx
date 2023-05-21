@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import Lottie from "lottie-react";
@@ -54,6 +54,11 @@ const Login = () => {
         console.log(error);
       })
   }
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
 
   return (

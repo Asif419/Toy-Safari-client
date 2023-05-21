@@ -10,7 +10,6 @@ const Banner = () => {
   const [sliderRef, instanceRef] = useKeenSlider(
     {
       slideChanged() {
-        console.log('slide changed')
       },
     },
   )

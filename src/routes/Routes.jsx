@@ -13,6 +13,7 @@ import Toy from "../pages/Toys/Toy/Toy";
 import UpdateToy from "../pages/Toys/UpsartToy/UpdateToy";
 import AddToy from "../pages/Toys/UpsartToy/AddToy";
 import Profile from "../pages/Profile/Profile";
+import Blogs from "../pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: '/profile',
         element: <Profile />
+      },
+      {
+        path: '/blogs',
+        element: <Blogs />
       }
     ]
   },

@@ -1,9 +1,11 @@
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import AllToysSingle from "./AllToysSingle";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from 'sweetalert2';
 import "sweetalert2/dist/sweetalert2.min.css";
+import PrivateRoute from "../../../routes/PrivateRoute";
+import Login from "../../Access/Login";
 
 
 const AllToys = () => {
@@ -12,6 +14,7 @@ const AllToys = () => {
   const [toys, setToys] = useState(allToys);
   const [searchValue, setSearchValue] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSingleToy = id => {
     if (!user) {
@@ -22,7 +25,7 @@ const AllToys = () => {
       })
         .then(result => {
           if (result.isConfirmed) {
-            navigate(`/login`);
+            navigate(`/toy/${id}`);
           }
         })
     }
