@@ -6,7 +6,7 @@ const Error = () => {
   const { error, status } = useRouteError();
 
   return (
-    <section className='flex items-center bg-gray-100 text-gray-900'>
+    <section className='flex items-center bg-gray-100 text-gray-900 px-2 md:px-0'>
       <div className='container flex flex-col items-center justify-center px-5 mx-auto'>
         <div>
           <Lottie
@@ -23,7 +23,7 @@ const Error = () => {
           <p className='text-2xl font-semibold md:text-3xl text-black mb-3'>
             {error?.message}
           </p>
-          <Link to='/' className='btn bg-black text-white'>
+          <Link to='/' className='btn bg-black text-white mb-5'>
             Back to homepage
           </Link>
         </div>

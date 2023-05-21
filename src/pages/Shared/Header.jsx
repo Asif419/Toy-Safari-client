@@ -178,7 +178,7 @@ const Header = () => {
             user &&
             <>
               <div className="dropdown dropdown-end">
-                <div className="tooltip tooltip-bottom" data-tip={user.displayName || ''}>
+                <div className="tooltip tooltip-bottom" data-tip={user?.displayName || ''}>
                   <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-14 rounded-full">
                       <img src={`${user?.photoURL} || 'https://i.ibb.co/q5hwqD5/photo-1573547429441-d7ef62e04b63.jpg'`} />

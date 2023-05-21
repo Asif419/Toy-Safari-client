@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 const Banner = () => {
 
-  const [sliderRef, instanceRef] = useKeenSlider(
+  const [sliderRef] = useKeenSlider(
     {
       slideChanged() {
       },
@@ -71,19 +71,6 @@ const Banner = () => {
               <img src="https://i.ibb.co/5GLdDbG/Wolf.jpg" alt="Wolf" className="" />
             </div>
           </div>
-
-          {/* <div className="h-[250px] lg:h-[480px] carousel carousel-vertical px-10">
-          <div className="carousel-item">
-            <img src="https://i.ibb.co/VBFc1vP/Horse.webp" alt="Wolf" className="" />
-          </div>
-          <div className="carousel-item">
-            <img src="https://i.ibb.co/r4M8jK4/Lion.jpg" alt="Wolf" className="h-full w-full object-cover" />
-          </div>
-          <div className="carousel-item">
-            <img src="https://i.ibb.co/5GLdDbG/Wolf.jpg" alt="Wolf" className="" />
-          </div>
-        </div> */}
-
         </div>
       </div>
     </div>

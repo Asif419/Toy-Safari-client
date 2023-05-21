@@ -7,7 +7,7 @@ import UseTitle from '../../utilities/UseTitle';
 const Profile = () => {
   const { user } = useContext(AuthContext);
 
-  UseTitle(`${user.displayName}`);
+  UseTitle(`${user?.displayName} || Profile`);
 
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Profile = () => {
           <div className="-mb-16 z-20">
             <div className="avatar">
               <div className="w-24 mask mask-squircle" data-aos="fade-up" data-aos-duration="1000">
-                <img src={user.photoURL} />
+                <img src={user?.photoURL} />
               </div>
             </div>
           </div>
@@ -31,8 +31,8 @@ const Profile = () => {
           <div className='z-10'>
             <div className="card card-compact w-96 bg-gray-100 shadow-xl p-5" data-aos="fade-up" data-aos-easing="ease-in" data-aos-duration="800">
               <div className="card-body mt-14">
-                <h2 className="card-title">{user.displayName}</h2>
-                <p>{user.email}</p>
+                <h2 className="card-title">{user?.displayName}</h2>
+                <p>{user?.email}</p>
                 <div className="card-actions justify-end">
                   <button className="btn bg-black text-white">Edit profile</button>
                 </div>

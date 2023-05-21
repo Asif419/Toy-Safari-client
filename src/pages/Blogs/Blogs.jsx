@@ -31,7 +31,7 @@ const Blogs = () => {
           </div>
           <div className='border p-3 md:p-5 rounded-lg bg-gray-100' data-aos="fade-left" data-aos-duration="1000">
             <p className='font-bold tracking-wider mb-4'>What is MongoDB aggregate and how does it work?</p>
-            <p className=''><span className='font-semibold'>Answer:</span>Aggregate in MongoDB is a strong function that lets you do complex operations on your data. It works by combining multiple stages like grouping, filtering, sorting, and calculating to process and transform your data. It's like a pipeline where data flows through different stages to produce the desired results, enabling you to perform complex queries and analysis on your MongoDB data.</p>
+            <p className=''><span className='font-semibold'>Answer:</span>Aggregate in MongoDB is a strong function that lets you do complex operations on your data. It works by combining multiple stages like grouping, filtering, sorting, and calculating to process and transform your data. Its like a pipeline where data flows through different stages to produce the desired results, enabling you to perform complex queries and analysis on your MongoDB data.</p>
           </div>
         </div>
       </div>

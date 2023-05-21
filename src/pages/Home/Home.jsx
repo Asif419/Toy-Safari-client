@@ -12,12 +12,18 @@ const Home = () => {
 
   return (
     <div className="py-5">
-      <Banner></Banner>
-      <Category></Category>
+      <div className="px-2 md:px-0">
+        <Banner></Banner>
+      </div>
+      <div className="px-2 md:px-0">
+        <Category></Category>
+      </div>
       <BannerTwo></BannerTwo>
       <Gallery></Gallery>
-      <Coupon></Coupon>
-      <Review></Review>
+      <div className="px-2 md:px-0">
+        <Coupon></Coupon>
+        <Review></Review>
+      </div>
     </div>
   );
 };

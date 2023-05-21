@@ -67,7 +67,7 @@ const AllToys = () => {
   }, []);
 
   return (
-    <div>
+    <div className="mx-2 md:mx-0">
       <div className="flex justify-center items-center">
         <input onChange={handleSearch} type="text" placeholder="Search Here | ex. horse, dog" className="input input-bordered my-3 w-full max-w-xs" />
       </div>

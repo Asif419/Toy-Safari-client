@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -38,8 +38,7 @@ const Register = () => {
     }
 
     createUser(email, password)
-      .then(result => {
-        const loggedUser = result.user;
+      .then(() => {
         updateUserProfile(name, photoURL);
         logOut();
         setErrorMessage(null);
@@ -53,9 +52,7 @@ const Register = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(result => {
-        const loggedUser = result.user;
-        console.log(loggedUser)
+      .then(() => {
         navigate(`${location.state.from}`, { replace: true });
       })
       .catch(error => {
@@ -65,9 +62,7 @@ const Register = () => {
 
   const handleGitHubSignIn = () => {
     gitHubSignIn()
-      .then(result => {
-        const loggedUser = result.user;
-        console.log(loggedUser)
+      .then(() => {
         navigate(`${location.state.from}`, { replace: true });
       })
       .catch(error => {
@@ -75,10 +70,13 @@ const Register = () => {
       })
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 70);
+  }, []);
 
   return (
     <div>
-      <div className="">
+      <div className="mx-2 md:mx-0">
         <div className="text-center mx-auto p-5 md:p-10 form-control w-full max-w-xl bg-base-200 rounded-2xl my-10">
           <form className='mb-3' onSubmit={handleRegister}>
             <h3 className='text-3xl mb-10 font-semibold tracking-widest'>Registration!</h3>

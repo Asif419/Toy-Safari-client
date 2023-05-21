@@ -5,17 +5,15 @@ import 'animate.css';
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import UseTitle from "../../../utilities/UseTitle";
-
 const AddToy = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
   UseTitle('Add Toy');
 
 
   const onSubmit = addedToy => {
-    addedToy.sellerImageURL = user.photoURL;
+    addedToy.sellerImageURL = user?.photoURL;
     fetch(`https://toy-safari-server.vercel.app/addToy`, {
       method: 'POST',
       headers: {
@@ -45,7 +43,7 @@ const AddToy = () => {
   }
 
   return (
-    <>
+    <div className="mx-2 md:mx-0">
       <div>
         <p className="text-center my-2 text-2xl">Add <span className="font-bold tracking-wider text-red-800 ">    </span>  toy</p>
         <hr className="w-1/3 mx-auto" />
@@ -84,7 +82,7 @@ const AddToy = () => {
                 <span className="label-text font-semibold">Seller email</span>
               </div>
               <div className="col-span-5">
-                <input className="w-10/12 px-3 py-1 rounded-lg" defaultValue={user.email} readOnly {...register("sellerEmail", { required: true })} />
+                <input className="w-10/12 px-3 py-1 rounded-lg" defaultValue={user?.email} readOnly {...register("sellerEmail", { required: true })} />
               </div>
             </div>
             <div className="grid grid-cols-8 gap-3 justify-items-start items-center">
@@ -92,7 +90,7 @@ const AddToy = () => {
                 <span className="label-text font-semibold">Seller Name</span>
               </div>
               <div className="col-span-5">
-                <input className="w-10/12 px-3 py-1 rounded-lg" defaultValue={user.displayName} readOnly {...register("sellerName", { required: true })} />
+                <input className="w-10/12 px-3 py-1 rounded-lg" defaultValue={user?.displayName} readOnly {...register("sellerName", { required: true })} />
               </div>
             </div>
           </div>
@@ -113,6 +111,7 @@ const AddToy = () => {
               </div>
               <div className="col-span-5">
                 <input className="w-10/12 px-3 py-1 rounded-lg" type="number" min="0" {...register("availableQuantity", { min: 0, required: true, setValueAs: (value) => parseFloat(value) })} />
+                {/* {errors.availableQuantity && <p className="text-red-500">Please enter a non-negative number.</p>} */}
               </div>
             </div>
           </div>
@@ -155,7 +154,7 @@ const AddToy = () => {
           <input className="btn bg-black text-white w-1/3 mx-auto mt-5" type="submit" value="Add Toy" />
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

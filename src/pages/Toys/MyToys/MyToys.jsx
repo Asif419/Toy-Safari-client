@@ -68,7 +68,7 @@ const MyToys = () => {
   }
 
   useEffect(() => {
-    console.log(1);
+
     fetch(`https://toy-safari-server.vercel.app/myToys?email=${user.email}&sort=${sort}&order=${order}`)
       .then(res => res.json())
       .then(data => {
@@ -90,7 +90,7 @@ const MyToys = () => {
   }
 
   return (
-    <>
+    <div className="mx-2 md:mx-0">
       <div className="flex mt-3 mx-2">
         <div className="ml-auto">
           {sort && order && (
@@ -151,7 +151,7 @@ const MyToys = () => {
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 };
 

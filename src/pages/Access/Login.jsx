@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import Lottie from "lottie-react";
 import login from '../../assets/animation/login.json';
 import { AuthContext } from "../../providers/AuthProvider";
@@ -8,7 +8,7 @@ import UseTitle from "../../utilities/UseTitle";
 
 
 const Login = () => {
-  const { emailSingIn, googleSignIn, gitHubSignIn } = useContext(AuthContext);
+  const { emailSingIn, googleSignIn } = useContext(AuthContext);
   const location = useLocation();
   const from = location.state?.from?.pathname || location.state?.from?.from || '/';
   const [errorMessage, setErrorMessage] = useState(null);
@@ -27,8 +27,7 @@ const Login = () => {
 
 
     emailSingIn(email, password)
-      .then(result => {
-        const loggedUser = result.user;
+      .then(() => {
         form.reset()
         navigate(from, { replace: true });
       })
@@ -39,34 +38,21 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(result => {
-        const loggedUser = result.user;
+      .then(() => {
         navigate(from, { replace: true });
       })
       .catch(error => {
         console.log(error);
       })
   }
-
-  const handleGitHubSignIn = () => {
-    gitHubSignIn()
-      .then(result => {
-        const loggedUser = result.user;
-        navigate(from, { replace: true });
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }
-
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 70);
   }, []);
 
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 mx-2 md:mx-0">
       <div className="text-center mx-auto p-5 md:p-10 form-control w-full max-w-sm bg-base-200 rounded-2xl my-10">
         <form className='mb-3' onSubmit={handleLogin}>
           <h3 className='text-3xl mb-10 font-semibold tracking-widest'>Please, Login!</h3>
@@ -94,7 +80,6 @@ const Login = () => {
           <div className="divider">OR</div>
           <p>Login with social media</p>
           <button onClick={handleGoogleSignIn} className='mr-4'><FaGoogle className='text-4xl' /></button>
-          <button onClick={handleGitHubSignIn}><FaGithub className='text-4xl' /></button>
         </div>
         <div>
           <div className="divider">New Here?</div>

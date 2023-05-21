@@ -50,7 +50,7 @@ const UpdateToy = () => {
   };
 
   return (
-    <>
+    <div className="mx-2 md:mx-0">
       <div>
         <p className="text-center my-2 text-2xl">Update <span className="font-bold tracking-wider text-red-800 ">  {toyName}  </span>  toy</p>
         <hr className="w-1/3 mx-auto" />
@@ -135,11 +135,11 @@ const UpdateToy = () => {
             </div>
           </div>
           {errors.exampleRequired && <span>This field is required</span>}
-          {/* <div id="toastContainer"></div> */}
+
           <input className="btn bg-black text-white w-1/3 mx-auto mt-5" type="submit" value="Update" />
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

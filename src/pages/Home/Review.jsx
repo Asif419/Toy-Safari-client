@@ -34,8 +34,6 @@ const Review = () => {
             <FaComments className='text-orange-600 h-10 w-10'></FaComments>
           </div>
           <p className='text-center px-3 md:px-5 pb-3'>We are extremely pleased with our experience as a client of Toys Safari. The platform provided us with excellent visibility and exposure for our products.</p>
-          {/* <div className='flex flex-col p-5 justify-center items-center'>
-          </div> */}
           <div className='flex flex-col justify-center items-center mb-5 relative'>
             <p className='text-2xl tracking-widest z-10'>Aria Struck</p>
             <p className='text-sm tracking-tight text-orange-800'>Web Designer</p>
@@ -53,8 +51,6 @@ const Review = () => {
             <FaComments className='text-orange-600 h-10 w-10'></FaComments>
           </div>
           <p className='text-center px-3 md:px-5 pb-3'>Working with Toy Safari was an incredible experience! The team truly understands the essence of quality and creativity in the toy industry.</p>
-          {/* <div className='flex flex-col p-5 justify-center items-center'>
-          </div> */}
           <div className='flex flex-col justify-center items-center mb-5 relative'>
             <p className='text-2xl tracking-widest z-10'>Xander Storm</p>
             <p className='text-sm tracking-tight text-orange-800'>Fashion Designer</p>
