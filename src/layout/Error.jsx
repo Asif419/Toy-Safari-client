@@ -23,7 +23,7 @@ const Error = () => {
           <p className='text-2xl font-semibold md:text-3xl text-black mb-3'>
             {error?.message}
           </p>
-          <Link to='/' className='btn'>
+          <Link to='/' className='btn bg-black text-white'>
             Back to homepage
           </Link>
         </div>
