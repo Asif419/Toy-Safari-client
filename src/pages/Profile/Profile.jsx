@@ -7,7 +7,7 @@ import UseTitle from '../../utilities/UseTitle';
 const Profile = () => {
   const { user } = useContext(AuthContext);
 
-  UseTitle(`${user?.displayName} || Profile`);
+  UseTitle(`${user?.displayName}`);
 
 
   useEffect(() => {
