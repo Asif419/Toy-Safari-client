@@ -1,10 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import money from '../../../assets/icon/money.png';
-import quantity from '../../../assets/icon/quantity.png';
+// import Rating from "react-rating";
+// import { FaRegStar, FaStar } from "react-icons/fa";
+import ratings from '../../../assets/icon/rating.png';
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
 
 const SingleCategory = ({ toy }) => {
-  const { _id, toyName, subCategory, price, availableQuantity, pictureURL } = toy;
+  const { _id, toyName, subCategory, price, rating, pictureURL } = toy;
   const navigate = useNavigate();
 
 
@@ -37,9 +41,14 @@ const SingleCategory = ({ toy }) => {
               <p>$ {price}</p>
             </div>
             <div className="flex flex-col justify-items-center items-center">
-              <img src={quantity} className="w-12 h-12" alt="quantity" />
-              <p className="font-bold">Quantity</p>
-              <p>{availableQuantity} pics</p>
+              <img src={ratings} className="w-12 h-12" alt="rating" />
+              <p className="font-bold">Rating</p>
+              <div>
+              <Rating
+              style={{ maxWidth: 100 }}
+              value={rating}
+              readOnly />
+              </div>
             </div>
           </div>
           {/* buy button */}

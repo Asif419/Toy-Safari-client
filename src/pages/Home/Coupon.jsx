@@ -1,9 +1,27 @@
 import coupon from '../../assets/picture/coupon-one.png';
 import logo from '../../assets/picture/coupon.png'
 import boss from '../../assets/picture/boss.png'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 
 const Coupon = () => {
+
+  useEffect(() => {
+    const handleScroll = () => {
+      AOS.refresh();
+    };
+
+    AOS.init({
+    });
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className='mt-20'>
@@ -18,14 +36,14 @@ const Coupon = () => {
           className={`px-5 rounded-xl bg-pink-100 flex justify-evenly items-center transition-transform duration-300 transform-gpu hover:bg-pink-200`}
 
         >
-          <div>
+          <div data-aos="fade-up-right" data-aos-duration="600">
             <img
               className={`h-40 md:h-72 w-40 md:w-72 scale-105`}
               src={coupon}
               alt=""
             />
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2" data-aos="fade-up" data-aos-duration="600">
             <p className={`text-2xl md:text-5xl font-bold`}>Get off
               <span className={`transition-opacity duration-500`}> 5% </span>
             </p>
@@ -39,6 +57,7 @@ const Coupon = () => {
         {/* right side */}
         <div
           className={`px-5 rounded-xl bg-slate-300 flex justify-evenly items-center transition-transform duration-300 transform-gpu hover:bg-slate-200`}
+          data-aos="fade-left" data-aos-duration="800"
         >
           <img src={boss} alt="" />
         </div>

@@ -2,8 +2,8 @@ import { useLoaderData } from "react-router-dom";
 import money from '../../../assets/icon/money.png';
 import quantity from '../../../assets/icon/quantity.png';
 import ratings from '../../../assets/icon/rating.png';
-import Rating from 'react-rating';
-import { FaStar, FaRegStar } from "react-icons/fa";
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css';
 import { useEffect } from "react";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -59,11 +59,9 @@ const Toy = () => {
               <p className="font-bold">Rating</p>
               <div>
                 <Rating
-                  fullSymbol={<FaStar />}
-                  emptySymbol={<FaRegStar />}
-                  initialRating={rating}
-                  readonly
-                />
+                  style={{ maxWidth: 100 }}
+                  value={rating}
+                  readOnly />
               </div>
             </div>
             <div className="flex flex-col justify-items-center items-center">
