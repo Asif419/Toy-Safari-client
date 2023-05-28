@@ -6,13 +6,13 @@
 > https://toy-safari.web.app  
 full project will be available here
 
+## This website's server side code in GitHub
+> https://github.com/Asif419/Toy-Safari-sever
+
 ## To login use demo id
 Email: user@gmail.com
 Password: 123456A
 Guide on creating a new user: Make sure your password has at least one Uppercase and one number, and Also you have to confirm your password has more than 5 characters
-
-## This website's server code in GitHub
-> https://github.com/programming-hero-web-course-4/b7a11-toy-marketplace-server-side-Asif419 (Private not for everyone)   
 
 ## Features
 This is a react project with react router and vite, tailwind css. The main features of this website are: 
